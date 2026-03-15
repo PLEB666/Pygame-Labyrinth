@@ -1,0 +1,79 @@
+SCREEN_WIDTH = 600
+SCREEN_HEIGHT = 400
+TILEWIDTH = 20
+DOOR_HEIGHT = 27
+INVENTORY_SIZE = (190,200)
+
+# Player
+GS = 18  #groessespieler
+PLAYER_SPEED = 2
+
+FPS = 60 # game clock tick
+PROJECTILE_SPEED = 12 # Weapon bullet speed
+ENEMY_SPEED = 2
+FRUIT_HEAL = 20 #health points from apple
+BOMB_DAMAGE = 25
+LVL_TIME = 41 #seconds for each level
+SHOOT_DAMAGE_TIME = 0.3 #seconds
+OPEN_INVENTORY_DELAY = 0.3 #seconds
+
+# Colors
+WHITE = (255,255,255)
+RED = (255,0,0)
+BLACK = (0,0,0)
+
+# Map objects
+EMPTY = 0
+WALL = 1
+DOOR = 2
+KEY = 3
+APPLE = 4
+WEAPON_UPGRADE = 5
+CLOCK_TIME = 6
+BOMB_ITEM = 7
+
+ENEMYA = 12
+ENEMYB = 13
+ENEMYC = 14
+
+INVENTORY_SLOT = 8
+PLAYER = 9
+
+# Locations 
+OUTOFBOUNDS = (-10)
+WIN_LOSE_POS = (110,140) #text position on screen
+INVENTORY_POS = (3*TILEWIDTH, 5*TILEWIDTH) #inventory position when opened
+
+# Position Enemy stats text
+STATS_ROW1 = 280
+STATS_ROW2 = 380
+STATS_ROW3 = 480
+
+STATS_LINE1 = 200
+STATS_LINE2 = 216
+STATS_LINE3 = 227
+STATS_LINE4 = 238
+
+# Items width & lenght in inventory
+ITEM_LENGHT = 46
+ITEM_WIDTH = 60
+
+# Position items in inventory
+SLOT_X1 = 3.6*TILEWIDTH
+SLOT_X2 = 6.6*TILEWIDTH
+SLOT_X3 = 9.9*TILEWIDTH
+
+SLOT_ROW1 = 5.4*TILEWIDTH
+SLOT_ROW2 = 8.4*TILEWIDTH
+SLOT_ROW3 = 11.8*TILEWIDTH
+
+# inventory slots from left to right
+SLOT1 = (SLOT_X1, SLOT_ROW1)
+SLOT2 = (SLOT_X2, SLOT_ROW1)
+SLOT3 = (SLOT_X3, SLOT_ROW1)
+SLOT4 = (SLOT_X1, SLOT_ROW2)
+SLOT5 = (SLOT_X2, SLOT_ROW2)
+SLOT6 = (SLOT_X3, SLOT_ROW2)
+SLOT7 = (SLOT_X1, SLOT_ROW3)
+SLOT8 = (SLOT_X2, SLOT_ROW3)
+SLOTUPGRADE = (SLOT_X3, SLOT_ROW3)

@@ -1,0 +1,2 @@
+enemy : chatGPT:		foto hilfe enemy, 
+	geschriebene text: 	write a pygame sprite class of an enemy that can navigate in a labyrinth
