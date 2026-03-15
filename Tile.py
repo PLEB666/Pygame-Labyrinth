@@ -1,5 +1,5 @@
 import pygame
-from constants import *
+
 
 class Tile(pygame.sprite.Sprite):
     def __init__(self, pos_x:int, pos_y:int, surface:pygame.Surface) -> None:

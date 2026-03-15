@@ -1,11 +1,21 @@
-import pygame
-from constants import *
-from Sprites import *
-from Tile import *
+from constants import (
+    APPLE,
+    BOMB_ITEM,
+    CLOCK_TIME,
+    DOOR,
+    ENEMYA,
+    ENEMYB,
+    ENEMYC,
+    KEY,
+    PLAYER,
+    TILEWIDTH,
+    WALL,
+    WEAPON_UPGRADE,
+)
 from Game_groups import *
 from Game_objects import *
-from player import *
-from Enemy import *
+from Sprites import *
+from Tile import Tile
 
 # 0 = Empty
 # 1 = Wall

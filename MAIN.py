@@ -1,13 +1,43 @@
 import pygame
-import random
 
-from constants import *
-from player import *
-from Enemy import *
-from Tile import *
-from Weapon import *
+from constants import (
+    BLACK,
+    BOMB_DAMAGE,
+    FPS,
+    FRUIT_HEAL,
+    INVENTORY_POS,
+    LVL_TIME,
+    OPEN_INVENTORY_DELAY,
+    RED,
+    SCREEN_HEIGHT,
+    SCREEN_WIDTH,
+    SHOOT_DAMAGE_TIME,
+    SLOT1,
+    SLOT2,
+    SLOT3,
+    SLOT4,
+    SLOT5,
+    SLOT6,
+    SLOT7,
+    SLOT8,
+    SLOTUPGRADE,
+    STATS_LINE1,
+    STATS_LINE2,
+    STATS_LINE3,
+    STATS_LINE4,
+    STATS_ROW1,
+    STATS_ROW2,
+    STATS_ROW3,
+    TILEWIDTH,
+    WHITE,
+    WIN_LOSE_POS,
+)
+from Game_groups import *
+from Game_objects import *
+from Levels import lvl1, lvl2, lvl3
 from Sprites import *
-from Levels import *
+from Tile import Tile
+from Weapon import Weapon
 
 #######################################################################################
 # Initialize the game engine

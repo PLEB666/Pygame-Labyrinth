@@ -1,6 +1,15 @@
 import pygame
-from constants import *
-from Tile import *
+
+from constants import (
+    DOOR_HEIGHT,
+    GS,
+    INVENTORY_SIZE,
+    ITEM_LENGHT,
+    ITEM_WIDTH,
+    OUTOFBOUNDS,
+    TILEWIDTH,
+)
+from Tile import Tile
 
 # Player animations ##################################################
 anim_list_img_player = []

@@ -1,7 +1,7 @@
-import pygame
-from constants import *
-from player import *
-from Enemy import *
+from constants import OUTOFBOUNDS, PLAYER_SPEED
+from Enemy import Enemy
+from player import Player
+from Sprites import anim_list_img_player
 
 # Player = Player(pos_x, pos_y, speed, damage, animation list)
 player = Player(OUTOFBOUNDS, OUTOFBOUNDS, PLAYER_SPEED, 20, anim_list_img_player)

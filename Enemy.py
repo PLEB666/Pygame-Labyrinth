@@ -1,7 +1,10 @@
-import pygame
 import random
+
+import pygame
+
 from constants import *
 from Sprites import *
+
 
 #######################################################################################
 class Enemy(pygame.sprite.Sprite):
