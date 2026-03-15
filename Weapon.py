@@ -1,5 +1,7 @@
 import pygame
-from constants import *
+
+from constants import PROJECTILE_SPEED, RED
+
 
 class Weapon(pygame.sprite.Sprite):
     def __init__(self, pos_x:int, pos_y:int, direction:str):
