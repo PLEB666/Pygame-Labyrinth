@@ -43,13 +43,9 @@ class Enemy(pygame.sprite.Sprite):
     
     # If enemy collision with wall : choose new path/way to move
     def redirect_enemy(self):
-        if self.current_direction == "up":
+        if self.current_direction == "up" or self.current_direction == "down":
             self.next_direction = random.choice(["left", "right"])
-        elif self.current_direction == "down":
-            self.next_direction = random.choice(["left", "right"])
-        elif self.current_direction == "left":
-            self.next_direction = random.choice(["up", "down"])
-        elif self.current_direction == "right":
+        elif self.current_direction == "left" or self.current_direction == "right":
             self.next_direction = random.choice(["up", "down"])
     
     # If enemy collision with wall : correct enemy

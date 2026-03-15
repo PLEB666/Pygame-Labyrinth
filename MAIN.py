@@ -142,44 +142,41 @@ while running:
             player.move_left()
         if pressed[pygame.K_d]:
             player.move_right()
-        if pressed[pygame.K_SPACE]:
-            if can_shoot_timer <= 0:
-                can_shoot_timer = SHOOT_DAMAGE_TIME*FPS
-                laser = Weapon(player.rect.centerx, player.rect.centery, player.get_direction())
-                weapon_group.add(laser)
-                gameobject_group.add(laser)
+        if pressed[pygame.K_SPACE] and can_shoot_timer <= 0:
+            can_shoot_timer = SHOOT_DAMAGE_TIME*FPS
+            laser = Weapon(player.rect.centerx, player.rect.centery, player.get_direction())
+            weapon_group.add(laser)
+            gameobject_group.add(laser)
         # Set bomb on field
-        if inventory_open == False:
-            if left_clicked:
-                for item in inventoryPlayer:
-                    if item == "bombPlayer":
-                        bombOnField = Tile(mouse_position_x-TILEWIDTH/2, mouse_position_y-TILEWIDTH/2, bomb)
-                        gameobject_group.add(bombOnField)
-                        bombobject_group.add(bombOnField)
-                        inventoryPlayer.remove("bombPlayer")
+        if inventory_open == False and left_clicked:
+            for item in inventoryPlayer:
+                if item == "bombPlayer":
+                    bombOnField = Tile(mouse_position_x-TILEWIDTH/2, mouse_position_y-TILEWIDTH/2, bomb)
+                    gameobject_group.add(bombOnField)
+                    bombobject_group.add(bombOnField)
+                    inventoryPlayer.remove("bombPlayer")
         # Inventory open/close
-        if pressed[pygame.K_e]:
-            if inventory_open_delay <= 0:
-                inventory_open_delay = OPEN_INVENTORY_DELAY*FPS
-                if inventory_open == False:
-                    # Open Inventory
-                    open_inventory = True
-                else:
-                    # Close inventory and set all variables to False
-                    open_inventory = False
-                    inventory_open = False
-                    
-                    key_found = False
-                    bomb_found = False
-                    
-                    invslot_1 = False
-                    invslot_2 = False
-                    invslot_3 = False
-                    invslot_4 = False
-                    invslot_5 = False
-                    invslot_6 = False
-                    invslot_7 = False
-                    invslot_8 = False
+        if pressed[pygame.K_e] and inventory_open_delay <= 0:
+            inventory_open_delay = OPEN_INVENTORY_DELAY*FPS
+            if inventory_open == False:
+                # Open Inventory
+                open_inventory = True
+            else:
+                # Close inventory and set all variables to False
+                open_inventory = False
+                inventory_open = False
+                
+                key_found = False
+                bomb_found = False
+                
+                invslot_1 = False
+                invslot_2 = False
+                invslot_3 = False
+                invslot_4 = False
+                invslot_5 = False
+                invslot_6 = False
+                invslot_7 = False
+                invslot_8 = False
             
 ####################################################################################################################
         if inventory_open == False:
@@ -194,10 +191,9 @@ while running:
                 player.correct_player()
             # Check for player collision with enemy
             collided_player_enemy = pygame.sprite.spritecollide(player, enemy_group, False)
-            if collided_player_enemy:
-                if damage_timer <= 0:
-                    player.damage_player(enemy.get_enemy_damage())
-                    damage_timer = SHOOT_DAMAGE_TIME*FPS
+            if collided_player_enemy and damage_timer <= 0:
+                player.damage_player(enemy.get_enemy_damage())
+                damage_timer = SHOOT_DAMAGE_TIME*FPS
             # Damage timer
             damage_timer -= 1
             # Check for player collision with upgrade
