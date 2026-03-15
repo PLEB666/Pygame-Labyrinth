@@ -76,8 +76,7 @@ class Player(pygame.sprite.Sprite):
     
     def heal_player(self, heal:int):
         self.__health += heal
-        if self.__health > self.__max_health:
-            self.__health = self.__max_health
+        self.__health = min(self.__health, self.__max_health)
     
     def upgrade_player(self, damage_amount:int):
         self.__damage += damage_amount
