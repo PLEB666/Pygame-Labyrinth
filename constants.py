@@ -2,25 +2,25 @@ SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 400
 TILEWIDTH = 20
 DOOR_HEIGHT = 27
-INVENTORY_SIZE = (190,200)
+INVENTORY_SIZE = (190, 200)
 
 # Player
-GS = 18  #groessespieler
+GS = 18  # groessespieler
 PLAYER_SPEED = 2
 
-FPS = 60 # game clock tick
-PROJECTILE_SPEED = 12 # Weapon bullet speed
+FPS = 60  # game clock tick
+PROJECTILE_SPEED = 12  # Weapon bullet speed
 ENEMY_SPEED = 2
-FRUIT_HEAL = 20 #health points from apple
+FRUIT_HEAL = 20  # health points from apple
 BOMB_DAMAGE = 25
-LVL_TIME = 41 #seconds for each level
-SHOOT_DAMAGE_TIME = 0.3 #seconds
-OPEN_INVENTORY_DELAY = 0.3 #seconds
+LVL_TIME = 41  # seconds for each level
+SHOOT_DAMAGE_TIME = 0.3  # seconds
+OPEN_INVENTORY_DELAY = 0.3  # seconds
 
 # Colors
-WHITE = (255,255,255)
-RED = (255,0,0)
-BLACK = (0,0,0)
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+BLACK = (0, 0, 0)
 
 # Map objects
 EMPTY = 0
@@ -39,10 +39,10 @@ ENEMYC = 14
 INVENTORY_SLOT = 8
 PLAYER = 9
 
-# Locations 
-OUTOFBOUNDS = (-10)
-WIN_LOSE_POS = (110,140) #text position on screen
-INVENTORY_POS = (3*TILEWIDTH, 5*TILEWIDTH) #inventory position when opened
+# Locations
+OUTOFBOUNDS = -10
+WIN_LOSE_POS = (110, 140)  # text position on screen
+INVENTORY_POS = (3 * TILEWIDTH, 5 * TILEWIDTH)  # inventory position when opened
 
 # Position Enemy stats text
 STATS_ROW1 = 280
@@ -59,13 +59,13 @@ ITEM_LENGHT = 46
 ITEM_WIDTH = 60
 
 # Position items in inventory
-SLOT_X1 = 3.6*TILEWIDTH
-SLOT_X2 = 6.6*TILEWIDTH
-SLOT_X3 = 9.9*TILEWIDTH
+SLOT_X1 = 3.6 * TILEWIDTH
+SLOT_X2 = 6.6 * TILEWIDTH
+SLOT_X3 = 9.9 * TILEWIDTH
 
-SLOT_ROW1 = 5.4*TILEWIDTH
-SLOT_ROW2 = 8.4*TILEWIDTH
-SLOT_ROW3 = 11.8*TILEWIDTH
+SLOT_ROW1 = 5.4 * TILEWIDTH
+SLOT_ROW2 = 8.4 * TILEWIDTH
+SLOT_ROW3 = 11.8 * TILEWIDTH
 
 # inventory slots from left to right
 SLOT1 = (SLOT_X1, SLOT_ROW1)

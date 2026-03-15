@@ -51,7 +51,7 @@ pygame.display.set_caption("Labyrinth Spiel")
 clock = pygame.time.Clock()
 
 # Variablen
-tickrate_counter = LVL_TIME*FPS
+tickrate_counter = LVL_TIME * FPS
 inventory_open_delay = 0
 damage_timer = 0
 can_shoot_timer = 0
@@ -105,7 +105,7 @@ enemyc_dead = textFont.render("Dead", True, RED)
 # GAME LOOP
 running = True
 while running:
-#######################################################################################
+    #######################################################################################
     # USER INTERACTION (event handling)
     for event in pygame.event.get():
         # Close the game window
@@ -124,16 +124,15 @@ while running:
         lvl1()
         level_generated = True
     if game_state == True:
-        
         # Mouse location
         mouse_position_x = pygame.mouse.get_pos()[0]
         mouse_position_y = pygame.mouse.get_pos()[1]
         # Check if left click presed
         left_clicked = pygame.mouse.get_pressed()[0]
-        
+
         # Check if keyboard button pressed
         pressed = pygame.key.get_pressed()
-        
+
         if pressed[pygame.K_w]:
             player.move_up()
         if pressed[pygame.K_s]:
@@ -143,7 +142,7 @@ while running:
         if pressed[pygame.K_d]:
             player.move_right()
         if pressed[pygame.K_SPACE] and can_shoot_timer <= 0:
-            can_shoot_timer = SHOOT_DAMAGE_TIME*FPS
+            can_shoot_timer = SHOOT_DAMAGE_TIME * FPS
             laser = Weapon(player.rect.centerx, player.rect.centery, player.get_direction())
             weapon_group.add(laser)
             gameobject_group.add(laser)
@@ -151,13 +150,13 @@ while running:
         if inventory_open == False and left_clicked:
             for item in inventoryPlayer:
                 if item == "bombPlayer":
-                    bombOnField = Tile(mouse_position_x-TILEWIDTH/2, mouse_position_y-TILEWIDTH/2, bomb)
+                    bombOnField = Tile(mouse_position_x - TILEWIDTH / 2, mouse_position_y - TILEWIDTH / 2, bomb)
                     gameobject_group.add(bombOnField)
                     bombobject_group.add(bombOnField)
                     inventoryPlayer.remove("bombPlayer")
         # Inventory open/close
         if pressed[pygame.K_e] and inventory_open_delay <= 0:
-            inventory_open_delay = OPEN_INVENTORY_DELAY*FPS
+            inventory_open_delay = OPEN_INVENTORY_DELAY * FPS
             if inventory_open == False:
                 # Open Inventory
                 open_inventory = True
@@ -165,10 +164,10 @@ while running:
                 # Close inventory and set all variables to False
                 open_inventory = False
                 inventory_open = False
-                
+
                 key_found = False
                 bomb_found = False
-                
+
                 invslot_1 = False
                 invslot_2 = False
                 invslot_3 = False
@@ -177,14 +176,14 @@ while running:
                 invslot_6 = False
                 invslot_7 = False
                 invslot_8 = False
-            
-####################################################################################################################
+
+        ####################################################################################################################
         if inventory_open == False:
             # UPDATE
             # Update all gameobjects in the gameobject_group
             gameobject_group.update()
 
-############# Player collisions ####################################################################################
+            ############# Player collisions ####################################################################################
             # Check for player collision with wall
             collided_wall = pygame.sprite.spritecollide(player, wall_group, False)
             if collided_wall:
@@ -193,7 +192,7 @@ while running:
             collided_player_enemy = pygame.sprite.spritecollide(player, enemy_group, False)
             if collided_player_enemy and damage_timer <= 0:
                 player.damage_player(enemy.get_enemy_damage())
-                damage_timer = SHOOT_DAMAGE_TIME*FPS
+                damage_timer = SHOOT_DAMAGE_TIME * FPS
             # Damage timer
             damage_timer -= 1
             # Check for player collision with upgrade
@@ -208,7 +207,7 @@ while running:
             # Check for player collision with clock item
             collided_clockobject = pygame.sprite.spritecollide(player, clockobject_group, True)
             if collided_clockobject:
-                tickrate_counter += 10*FPS
+                tickrate_counter += 10 * FPS
             # Check for player collision with bomb item
             collided_bombobject = pygame.sprite.spritecollide(player, bombobject_group, True)
             if collided_bombobject:
@@ -236,21 +235,21 @@ while running:
                     at_lvl1 = False
                     at_lvl2 = True
                     at_lvl3 = False
-                    tickrate_counter = LVL_TIME*FPS   
+                    tickrate_counter = LVL_TIME * FPS
                 # Transition to lvl 3
                 elif at_lvl2 == True:
                     lvl3()
-                    inventoryPlayer.remove("keyPlayer") 
+                    inventoryPlayer.remove("keyPlayer")
                     at_lvl1 = False
                     at_lvl2 = False
                     at_lvl3 = True
-                    tickrate_counter = LVL_TIME*FPS
+                    tickrate_counter = LVL_TIME * FPS
                 # Win screen for lvl 3
                 elif at_lvl3 == True:
                     game_won = True
                     game_state = False
 
-############# Laser collision ########################################################################################
+            ############# Laser collision ########################################################################################
             # Check for laser collision with wall
             collided_laser_wall = pygame.sprite.groupcollide(weapon_group, wall_group, True, False)
             if collided_laser_wall:
@@ -258,7 +257,7 @@ while running:
             # Delay weapon shoot time
             can_shoot_timer -= 1
 
-############# Enemy collision #########################################################################################
+            ############# Enemy collision #########################################################################################
             # Check for enemy collision with wall
             collided_enemy_wall = pygame.sprite.groupcollide(enemy_group, wall_group, False, False)
             if collided_enemy_wall:
@@ -284,13 +283,13 @@ while running:
                     enemy_group.remove(enemy)
                     gameobject_group.remove(enemy)
 
-############# Update time #############################################################################################  
+            ############# Update time #############################################################################################
             # Time, Score text
             tickrate_counter -= 1
-            game_time = tickrate_counter//FPS
+            game_time = tickrate_counter // FPS
             time_text = font.render("Time: " + str(game_time) + " Seconds", True, WHITE)
 
-######### Update enemy stats ##########################################################################################
+        ######### Update enemy stats ##########################################################################################
         # Enemy stats in inventory
         if at_lvl1:
             # Enemy a health, damage, speed stats
@@ -331,10 +330,10 @@ while running:
             enemyc_lvl3_health = textFont.render("Health: " + str(enemyc_lvl3.get_enemy_health()), True, WHITE)
             enemyc_lvl3_damage = textFont.render("Damage: " + str(enemyc_lvl3.get_enemy_damage()), True, WHITE)
             enemyc_lvl3_speed = textFont.render("Speed: " + str(enemyc_lvl3.get_enemy_speed()), True, WHITE)
-        
+
         # Delay to open inventory
         inventory_open_delay -= 1
-#######################################################################################
+        #######################################################################################
         # RENDER
         # Clear the screen
         screen.fill(BLACK)
@@ -346,8 +345,8 @@ while running:
         screen.blit(time_text, (1, 1))
         # Draw Player health
         health_text = font.render("Health: " + str(player.get_player_health()) + "/100", True, WHITE)
-        screen.blit(health_text, (1, 19*TILEWIDTH))
-    	
+        screen.blit(health_text, (1, 19 * TILEWIDTH))
+
         # Inventory
         if open_inventory == True:
             inventory_open = True
@@ -355,7 +354,7 @@ while running:
             # Check for upgrade in inventory and draw
             if upgrade_collected:
                 screen.blit(upgrade_inInventory, (SLOTUPGRADE))
-            
+
             # Check for all items in inventory to draw
             for item in inventoryPlayer:
                 # Check for key in inventory and draw
@@ -432,104 +431,104 @@ while running:
                             bomb_slot = SLOT8
                     else:
                         screen.blit(bomb_inInventory, (bomb_slot))
-            
+
             # Draw enemy stats near inventoy
             if at_lvl1:
                 # Show enemy A stats or alive status
                 if enemya_lvl1.get_enemy_health() >= 1:
-                    screen.blit(enemya_name,  (STATS_ROW1,STATS_LINE1))
-                    screen.blit(enemya_lvl1_health, (STATS_ROW1,STATS_LINE2))
-                    screen.blit(enemya_lvl1_damage, (STATS_ROW1,STATS_LINE3))
-                    screen.blit(enemya_lvl1_speed, (STATS_ROW1,STATS_LINE4))
+                    screen.blit(enemya_name, (STATS_ROW1, STATS_LINE1))
+                    screen.blit(enemya_lvl1_health, (STATS_ROW1, STATS_LINE2))
+                    screen.blit(enemya_lvl1_damage, (STATS_ROW1, STATS_LINE3))
+                    screen.blit(enemya_lvl1_speed, (STATS_ROW1, STATS_LINE4))
                 else:
-                    screen.blit(enemya_name,  (STATS_ROW1,STATS_LINE1))
-                    screen.blit(enemya_dead, (STATS_ROW1,STATS_LINE2))
+                    screen.blit(enemya_name, (STATS_ROW1, STATS_LINE1))
+                    screen.blit(enemya_dead, (STATS_ROW1, STATS_LINE2))
                 # Show enemy B stats or alive status
                 if enemyb_lvl1.get_enemy_health() >= 1:
-                    screen.blit(enemyb_name,  (STATS_ROW2,STATS_LINE1))
-                    screen.blit(enemyb_lvl1_health, (STATS_ROW2,STATS_LINE2))
-                    screen.blit(enemyb_lvl1_damage, (STATS_ROW2,STATS_LINE3))
-                    screen.blit(enemyb_lvl1_speed, (STATS_ROW2,STATS_LINE4))
+                    screen.blit(enemyb_name, (STATS_ROW2, STATS_LINE1))
+                    screen.blit(enemyb_lvl1_health, (STATS_ROW2, STATS_LINE2))
+                    screen.blit(enemyb_lvl1_damage, (STATS_ROW2, STATS_LINE3))
+                    screen.blit(enemyb_lvl1_speed, (STATS_ROW2, STATS_LINE4))
                 else:
-                    screen.blit(enemyb_name, (STATS_ROW2,STATS_LINE1))
-                    screen.blit(enemyb_dead, (STATS_ROW2,STATS_LINE2))
+                    screen.blit(enemyb_name, (STATS_ROW2, STATS_LINE1))
+                    screen.blit(enemyb_dead, (STATS_ROW2, STATS_LINE2))
                 # Show enemy C stats or alive status
                 if enemyc_lvl1.get_enemy_health() >= 1:
-                    screen.blit(enemyc_name,  (STATS_ROW3,STATS_LINE1))
-                    screen.blit(enemyc_lvl1_health, (STATS_ROW3,STATS_LINE2))
-                    screen.blit(enemyc_lvl1_damage, (STATS_ROW3,STATS_LINE3))
-                    screen.blit(enemyc_lvl1_speed, (STATS_ROW3,STATS_LINE4))
+                    screen.blit(enemyc_name, (STATS_ROW3, STATS_LINE1))
+                    screen.blit(enemyc_lvl1_health, (STATS_ROW3, STATS_LINE2))
+                    screen.blit(enemyc_lvl1_damage, (STATS_ROW3, STATS_LINE3))
+                    screen.blit(enemyc_lvl1_speed, (STATS_ROW3, STATS_LINE4))
                 else:
-                    screen.blit(enemyc_name, (STATS_ROW3,STATS_LINE1))
-                    screen.blit(enemyc_dead, (STATS_ROW3,STATS_LINE2))
+                    screen.blit(enemyc_name, (STATS_ROW3, STATS_LINE1))
+                    screen.blit(enemyc_dead, (STATS_ROW3, STATS_LINE2))
             if at_lvl2:
                 # Show enemy A stats or alive status
                 if enemya_lvl2.get_enemy_health() >= 1:
-                    screen.blit(enemya_name,  (STATS_ROW1,STATS_LINE1))
-                    screen.blit(enemya_lvl2_health, (STATS_ROW1,STATS_LINE2))
-                    screen.blit(enemya_lvl2_damage, (STATS_ROW1,STATS_LINE3))
-                    screen.blit(enemya_lvl2_speed, (STATS_ROW1,STATS_LINE4))
+                    screen.blit(enemya_name, (STATS_ROW1, STATS_LINE1))
+                    screen.blit(enemya_lvl2_health, (STATS_ROW1, STATS_LINE2))
+                    screen.blit(enemya_lvl2_damage, (STATS_ROW1, STATS_LINE3))
+                    screen.blit(enemya_lvl2_speed, (STATS_ROW1, STATS_LINE4))
                 else:
-                    screen.blit(enemya_name,  (STATS_ROW1,STATS_LINE1))
-                    screen.blit(enemya_dead, (STATS_ROW1,STATS_LINE2))
+                    screen.blit(enemya_name, (STATS_ROW1, STATS_LINE1))
+                    screen.blit(enemya_dead, (STATS_ROW1, STATS_LINE2))
                 # Show enemy B stats or alive status
                 if enemyb_lvl2.get_enemy_health() >= 1:
-                    screen.blit(enemyb_name,  (STATS_ROW2,STATS_LINE1))
-                    screen.blit(enemyb_lvl2_health, (STATS_ROW2,STATS_LINE2))
-                    screen.blit(enemyb_lvl2_damage, (STATS_ROW2,STATS_LINE3))
-                    screen.blit(enemyb_lvl2_speed, (STATS_ROW2,STATS_LINE4))
+                    screen.blit(enemyb_name, (STATS_ROW2, STATS_LINE1))
+                    screen.blit(enemyb_lvl2_health, (STATS_ROW2, STATS_LINE2))
+                    screen.blit(enemyb_lvl2_damage, (STATS_ROW2, STATS_LINE3))
+                    screen.blit(enemyb_lvl2_speed, (STATS_ROW2, STATS_LINE4))
                 else:
-                    screen.blit(enemyb_name, (STATS_ROW2,STATS_LINE1))
-                    screen.blit(enemyb_dead, (STATS_ROW2,STATS_LINE2))
+                    screen.blit(enemyb_name, (STATS_ROW2, STATS_LINE1))
+                    screen.blit(enemyb_dead, (STATS_ROW2, STATS_LINE2))
                 # Show enemy C stats or alive status
                 if enemyc_lvl2.get_enemy_health() >= 1:
-                    screen.blit(enemyc_name,  (STATS_ROW3,STATS_LINE1))
-                    screen.blit(enemyc_lvl2_health, (STATS_ROW3,STATS_LINE2))
-                    screen.blit(enemyc_lvl2_damage, (STATS_ROW3,STATS_LINE3))
-                    screen.blit(enemyc_lvl2_speed, (STATS_ROW3,STATS_LINE4))
+                    screen.blit(enemyc_name, (STATS_ROW3, STATS_LINE1))
+                    screen.blit(enemyc_lvl2_health, (STATS_ROW3, STATS_LINE2))
+                    screen.blit(enemyc_lvl2_damage, (STATS_ROW3, STATS_LINE3))
+                    screen.blit(enemyc_lvl2_speed, (STATS_ROW3, STATS_LINE4))
                 else:
-                    screen.blit(enemyc_name, (STATS_ROW3,STATS_LINE1))
-                    screen.blit(enemyc_dead, (STATS_ROW3,STATS_LINE2))
+                    screen.blit(enemyc_name, (STATS_ROW3, STATS_LINE1))
+                    screen.blit(enemyc_dead, (STATS_ROW3, STATS_LINE2))
             if at_lvl3:
                 # Show enemy A stats or alive status
                 if enemya_lvl3.get_enemy_health() >= 1:
-                    screen.blit(enemya_name,  (STATS_ROW1,STATS_LINE1))
-                    screen.blit(enemya_lvl3_health, (STATS_ROW1,STATS_LINE2))
-                    screen.blit(enemya_lvl3_damage, (STATS_ROW1,STATS_LINE3))
-                    screen.blit(enemya_lvl3_speed, (STATS_ROW1,STATS_LINE4))
+                    screen.blit(enemya_name, (STATS_ROW1, STATS_LINE1))
+                    screen.blit(enemya_lvl3_health, (STATS_ROW1, STATS_LINE2))
+                    screen.blit(enemya_lvl3_damage, (STATS_ROW1, STATS_LINE3))
+                    screen.blit(enemya_lvl3_speed, (STATS_ROW1, STATS_LINE4))
                 else:
-                    screen.blit(enemya_name,  (STATS_ROW1,STATS_LINE1))
-                    screen.blit(enemya_dead, (STATS_ROW1,STATS_LINE2))
+                    screen.blit(enemya_name, (STATS_ROW1, STATS_LINE1))
+                    screen.blit(enemya_dead, (STATS_ROW1, STATS_LINE2))
                 # Show enemy B stats or alive status
                 if enemyb_lvl3.get_enemy_health() >= 1:
-                    screen.blit(enemyb_name,  (STATS_ROW2,STATS_LINE1))
-                    screen.blit(enemyb_lvl3_health, (STATS_ROW2,STATS_LINE2))
-                    screen.blit(enemyb_lvl3_damage, (STATS_ROW2,STATS_LINE3))
-                    screen.blit(enemyb_lvl3_speed, (STATS_ROW2,STATS_LINE4))
+                    screen.blit(enemyb_name, (STATS_ROW2, STATS_LINE1))
+                    screen.blit(enemyb_lvl3_health, (STATS_ROW2, STATS_LINE2))
+                    screen.blit(enemyb_lvl3_damage, (STATS_ROW2, STATS_LINE3))
+                    screen.blit(enemyb_lvl3_speed, (STATS_ROW2, STATS_LINE4))
                 else:
-                    screen.blit(enemyb_name, (STATS_ROW2,STATS_LINE1))
-                    screen.blit(enemyb_dead, (STATS_ROW2,STATS_LINE2))
+                    screen.blit(enemyb_name, (STATS_ROW2, STATS_LINE1))
+                    screen.blit(enemyb_dead, (STATS_ROW2, STATS_LINE2))
                 # Show enemy C stats or alive status
                 if enemyc_lvl3.get_enemy_health() >= 1:
-                    screen.blit(enemyc_name,  (STATS_ROW3,STATS_LINE1))
-                    screen.blit(enemyc_lvl3_health, (STATS_ROW3,STATS_LINE2))
-                    screen.blit(enemyc_lvl3_damage, (STATS_ROW3,STATS_LINE3))
-                    screen.blit(enemyc_lvl3_speed, (STATS_ROW3,STATS_LINE4))
+                    screen.blit(enemyc_name, (STATS_ROW3, STATS_LINE1))
+                    screen.blit(enemyc_lvl3_health, (STATS_ROW3, STATS_LINE2))
+                    screen.blit(enemyc_lvl3_damage, (STATS_ROW3, STATS_LINE3))
+                    screen.blit(enemyc_lvl3_speed, (STATS_ROW3, STATS_LINE4))
                 else:
-                    screen.blit(enemyc_name, (STATS_ROW3,STATS_LINE1))
-                    screen.blit(enemyc_dead, (STATS_ROW3,STATS_LINE2))
-            
+                    screen.blit(enemyc_name, (STATS_ROW3, STATS_LINE1))
+                    screen.blit(enemyc_dead, (STATS_ROW3, STATS_LINE2))
+
         # Draw lose/win condition
         if tickrate_counter <= 0 or player.get_player_health() <= 0:
             screen.blit(lose_text, WIN_LOSE_POS)
             game_state = False
         if game_won == True:
             screen.blit(win_text, WIN_LOSE_POS)
-        
+
         # Update the screen
         pygame.display.flip()
 
-#######################################################################################
+        #######################################################################################
         # Time management
         clock.tick(FPS)
 
