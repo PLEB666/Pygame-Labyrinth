@@ -54,14 +54,14 @@ closedDoor_surface = pygame.transform.scale(closedDoor_surface, (TILEWIDTH, DOOR
 # Open Door photo #####################################################
 openDoor_surface = pygame.image.load("./Sprites/openDoor.png")
 openDoor_surface = pygame.transform.scale(openDoor_surface, (TILEWIDTH, DOOR_HEIGHT))
-openDoor_lvl1 = Tile(OUTOFBOUNDS,OUTOFBOUNDS, openDoor_surface)
-openDoor_lvl2 = Tile(OUTOFBOUNDS,OUTOFBOUNDS, openDoor_surface)
-openDoor_lvl3 = Tile(OUTOFBOUNDS,OUTOFBOUNDS, openDoor_surface)
+openDoor_lvl1 = Tile(OUTOFBOUNDS, OUTOFBOUNDS, openDoor_surface)
+openDoor_lvl2 = Tile(OUTOFBOUNDS, OUTOFBOUNDS, openDoor_surface)
+openDoor_lvl3 = Tile(OUTOFBOUNDS, OUTOFBOUNDS, openDoor_surface)
 
 # Key photo ###########################################################
 key = pygame.image.load("./Sprites/key.png")
 key = pygame.transform.scale(key, (TILEWIDTH, TILEWIDTH))
-key_inInventory = pygame.transform.scale(key, (ITEM_LENGHT,ITEM_WIDTH))
+key_inInventory = pygame.transform.scale(key, (ITEM_LENGHT, ITEM_WIDTH))
 
 # Full Inventory photo ################################################
 inventory = pygame.image.load("./Sprites/inventory3x3.png")
@@ -73,12 +73,12 @@ apple = pygame.transform.scale(apple, (TILEWIDTH, TILEWIDTH))
 
 # Clock photo #########################################################
 clock_time = pygame.image.load("./Sprites/clock.png")
-clock_time = pygame.transform.scale(clock_time, (TILEWIDTH,TILEWIDTH))
+clock_time = pygame.transform.scale(clock_time, (TILEWIDTH, TILEWIDTH))
 
 # Weapon Upgrade photo ################################################
 upgrade = pygame.image.load("./Sprites/upgrade.png")
 upgrade = pygame.transform.scale(upgrade, (TILEWIDTH, TILEWIDTH))
-upgrade_inInventory = pygame.transform.scale(upgrade, (ITEM_LENGHT,ITEM_WIDTH))
+upgrade_inInventory = pygame.transform.scale(upgrade, (ITEM_LENGHT, ITEM_WIDTH))
 
 # Bomb photo ##########################################################
 bomb = pygame.image.load("./Sprites/bomb.png")
